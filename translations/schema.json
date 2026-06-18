@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Javinizer Web Translation Dictionary",
+  "type": "object",
+  "required": ["locale", "exact", "patterns"],
+  "properties": {
+    "name": { "type": "string" },
+    "locale": { "type": "string" },
+    "version": { "type": "string" },
+    "updated": { "type": "string" },
+    "notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "exact": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "patterns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["match", "replace"],
+        "properties": {
+          "match": { "type": "string" },
+          "replace": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": true
+}
+
