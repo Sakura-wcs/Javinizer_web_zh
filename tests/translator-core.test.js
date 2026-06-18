@@ -86,3 +86,23 @@ test('real zh-CN dictionary contains required Javinizer web entries', () => {
   assert.equal(translator.translateText('235 files'), '235 个文件');
   assert.equal(translator.translateText('Active jobs: 0'), '活动任务：0');
 });
+
+test('real zh-CN dictionary covers expanded settings fields', () => {
+  const dictionaryPath = path.join(__dirname, '..', 'translations', 'zh-CN.json');
+  const realDictionary = JSON.parse(fs.readFileSync(dictionaryPath, 'utf8'));
+  const translator = createTranslator(realDictionary);
+
+  assert.equal(translator.translateText('Host'), '主机');
+  assert.equal(translator.translateText('Allowed Directories'), '允许访问的目录');
+  assert.equal(translator.translateText('Max Files Per Scan'), '每次扫描最大文件数');
+  assert.equal(translator.translateText('Request Timeout Seconds'), '请求超时时间（秒）');
+  assert.equal(translator.translateText('Binary Path'), '浏览器路径');
+  assert.equal(translator.translateText('Window Width'), '窗口宽度');
+  assert.equal(translator.translateText('Apply To Primary'), '写回主字段');
+  assert.equal(translator.translateText('Overwrite Existing Target'), '覆盖已有目标译文');
+  assert.equal(translator.translateText('Folder Format'), '文件夹格式');
+  assert.equal(translator.translateText('Subfolder Format'), '子文件夹格式');
+  assert.equal(translator.translateText('Min Size Mb'), '最小大小（MB）');
+  assert.equal(translator.translateText('Regex Pattern'), '番号正则表达式');
+  assert.equal(translator.translateText('Default Review View'), '默认检查视图');
+});
