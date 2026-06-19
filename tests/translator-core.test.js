@@ -106,3 +106,19 @@ test('real zh-CN dictionary covers expanded settings fields', () => {
   assert.equal(translator.translateText('Regex Pattern'), '番号正则表达式');
   assert.equal(translator.translateText('Default Review View'), '默认检查视图');
 });
+
+test('real zh-CN dictionary covers expanded Swagger UI texts', () => {
+  const dictionaryPath = path.join(__dirname, '..', 'translations', 'zh-CN.json');
+  const realDictionary = JSON.parse(fs.readFileSync(dictionaryPath, 'utf8'));
+  const translator = createTranslator(realDictionary);
+
+  assert.equal(translator.translateText('Try it out'), '试用');
+  assert.equal(translator.translateText('Example Value'), '示例值');
+  assert.equal(translator.translateText('Copy to clipboard'), '复制到剪贴板');
+  assert.equal(translator.translateText('Batch scrape movies'), '批量刮削影片');
+  assert.equal(translator.translateText('Preview organize output'), '预览整理输出');
+  assert.equal(translator.translateText('Revert all file organization operations for a batch job, moving files back to original paths'), '回滚批量任务的所有文件整理操作，将文件移回原路径');
+  assert.equal(translator.translateText('Test proxy connectivity'), '测试代理连通性');
+  assert.equal(translator.translateText('Compare existing NFO file with freshly scraped metadata, showing differences and merge preview'), '将现有 NFO 文件与新刮削元数据对比，显示差异和合并预览');
+  assert.equal(translator.translateText('REST API for JAV metadata scraping and file organization'), '用于JAV元数据刮削和文件整理的REST API');
+});
