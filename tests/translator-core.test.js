@@ -137,3 +137,20 @@ test('real zh-CN dictionary covers hidden Swagger schema descriptions', () => {
   assert.equal(translator.translateText('Returns advisory information about later batches that share file paths with the target batch. This does NOT block the revert — it provides warnings only (D-07).'), '返回后续批次中与目标批次共享文件路径的提示信息；这不会阻止回滚，只提供警告（D-07）。');
   assert.equal(translator.translateText('Set up initial admin credentials. Only available from localhost or with bootstrap secret when auth is not yet initialized.'), '设置初始管理员凭据。仅在认证尚未初始化时，可从 localhost 或使用引导密钥访问。');
 });
+
+test('real zh-CN dictionary covers settings and browse option helper text', () => {
+  const dictionaryPath = path.join(__dirname, '..', 'translations', 'zh-CN.json');
+  const realDictionary = JSON.parse(fs.readFileSync(dictionaryPath, 'utf8'));
+  const translator = createTranslator(realDictionary);
+
+  assert.equal(translator.translateText('Force Refresh'), '强制刷新');
+  assert.equal(translator.translateText('Clear cache and fetch fresh metadata'), '清除缓存并重新获取最新元数据');
+  assert.equal(translator.translateText('Manual Scraper Selection'), '手动选择刮削器');
+  assert.equal(translator.translateText('Choose specific scrapers'), '选择指定刮削器');
+  assert.equal(translator.translateText('Enable automatic version checking'), '启用自动版本检查');
+  assert.equal(translator.translateText('Base directory for temporary files (default: data/temp). Cannot contain path traversal patterns.'), '临时文件的基础目录（默认：data/temp）。不能包含路径穿越写法。');
+  assert.equal(translator.translateText('Master switch for browser automation. When disabled, all scrapers will use direct HTTP requests even if they have \'Use Browser\' enabled.'), '浏览器自动化总开关。关闭后，即使单个刮削器启用了“使用浏览器”，也会改用直接 HTTP 请求。');
+  assert.equal(translator.translateText('Choose how files are organized during operations'), '选择执行任务时如何整理文件');
+  assert.equal(translator.translateText('Generate .nfo metadata files for use with media servers like Kodi and Plex'), '生成供 Kodi、Plex 等媒体服务器使用的 .nfo 元数据文件');
+  assert.equal(translator.translateText('Global proxy validation uses the default profile test. Run Test Profile on the current default profile.'), '全局代理校验会使用默认配置的测试结果。请对当前默认配置运行“测试配置”。');
+});
