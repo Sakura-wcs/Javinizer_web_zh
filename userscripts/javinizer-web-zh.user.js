@@ -94,8 +94,8 @@
     function translateText(value) {
       const original = String(value || '');
       const text = normalizeText(original);
-      if (shouldSkipText(text)) return original;
       if (Object.prototype.hasOwnProperty.call(exact, text)) return exact[text];
+      if (shouldSkipText(text)) return original;
 
       for (const pattern of patterns) {
         if (pattern.regex.test(text)) {

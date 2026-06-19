@@ -122,3 +122,18 @@ test('real zh-CN dictionary covers expanded Swagger UI texts', () => {
   assert.equal(translator.translateText('Compare existing NFO file with freshly scraped metadata, showing differences and merge preview'), '将现有 NFO 文件与新刮削元数据对比，显示差异和合并预览');
   assert.equal(translator.translateText('REST API for JAV metadata scraping and file organization'), '用于JAV元数据刮削和文件整理的REST API');
 });
+
+test('real zh-CN dictionary covers hidden Swagger schema descriptions', () => {
+  const dictionaryPath = path.join(__dirname, '..', 'translations', 'zh-CN.json');
+  const realDictionary = JSON.parse(fs.readFileSync(dictionaryPath, 'utf8'));
+  const translator = createTranslator(realDictionary);
+
+  assert.equal(translator.translateText('Authenticate with username and password to create a session'), '使用用户名和密码认证并创建会话');
+  assert.equal(translator.translateText('Browse a directory and list its contents'), '浏览目录并列出其中内容');
+  assert.equal(translator.translateText('Array field merge strategy: merge or replace'), '数组字段合并策略：合并或替换');
+  assert.equal(translator.translateText('Filter by severity (debug, info, warn, error)'), '按严重级别筛选（debug、info、warn、error）');
+  assert.equal(translator.translateText('Generate NFOs and download media files in place without moving video files'), '就地生成 NFO 并下载媒体文件，不移动视频文件');
+  assert.equal(translator.translateText('Priority is the global scraper execution order. If empty, derived from registered scraper priorities at initialization. If set, used directly for all metadata fields that lack a Fields override.'), 'Priority 是全局刮削器执行顺序。留空时会在初始化时从已注册刮削器优先级推导；设置后会直接用于所有未配置 Fields 覆盖的元数据字段。');
+  assert.equal(translator.translateText('Returns advisory information about later batches that share file paths with the target batch. This does NOT block the revert — it provides warnings only (D-07).'), '返回后续批次中与目标批次共享文件路径的提示信息；这不会阻止回滚，只提供警告（D-07）。');
+  assert.equal(translator.translateText('Set up initial admin credentials. Only available from localhost or with bootstrap secret when auth is not yet initialized.'), '设置初始管理员凭据。仅在认证尚未初始化时，可从 localhost 或使用引导密钥访问。');
+});
